@@ -7,8 +7,6 @@ This example demonstrates a service that extends an interface and all implementi
 ## Setup
 
 ```shell
-cd schema-stitching-extending-interface
-
 yarn install
 yarn start
 ```
@@ -51,3 +49,4 @@ Potential Solutions/Workarounds:
 1. Notes service introspects types from other services or other type/schema registry. Downside is that any service could implement new `Product` types, so this would potentially need to introspect every service. It would be ideal if the Notes service did not need to be aware of any other service in the first place.
 2. Use REST endpoints, not GraphQL for the Notes service to get around the GraphQL restriction. This would make the Notes service simpler, but the gateway would still need to implement the graphql schema and resolvers locally.
 3. Since the gateway is already aware of all types, create some sort of new schema stitching directive/merge config that tells the gateway to extend all types that implement the given interface with the new field. This would likely involve Notes service in this example to implement some placeholder `Product` type so it can still resolve to a type, but then the gateway handles transforming that placeholder type into the correct type.
+4. Refactor to not extend the interface itself, but an object type that exists on the interface. [Example](https://github.com/chris-clarke-dev/schema-stitching-extending-remote-interface/tree/solution04)
