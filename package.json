@@ -1,0 +1,25 @@
+{
+  "name": "schema-stitching-extending-interface",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start-products-service": "nodemon --watch services/products-service services/products-service/index.js",
+    "start-notes-service": "nodemon --watch services/notes-service services/notes-service/index.js",
+    "start-gateway": "nodemon index.js",
+    "start": "concurrently \"yarn:start-*\""
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^7.0.0",
+    "@graphql-tools/stitch": "^7.0.4",
+    "@graphql-tools/stitching-directives": "^1.3.3",
+    "@graphql-tools/wrap": "^7.0.1",
+    "concurrently": "^5.3.0",
+    "cross-fetch": "^3.0.6",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.4.0",
+    "nodemon": "^2.0.6",
+    "wait-on": "^5.2.1"
+  }
+}
